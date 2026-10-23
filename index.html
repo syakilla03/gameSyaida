@@ -31,7 +31,7 @@
     position: relative;
   }
 
-  /* Animasi Ikon Terapung (Floating GIF/Emoji Effect) */
+  /* Animasi Ikon Terapung (Floating Effect) */
   .floating-icon {
     position: absolute;
     font-size: 2.5rem;
@@ -73,7 +73,6 @@
     color: #fde047;
     font-weight: 700;
     margin-bottom: 15px;
-    align-items: center;
     text-align: center;
     display: block;
   }
@@ -184,6 +183,18 @@
   ul { padding-left: 20px; }
   li { margin-bottom: 8px; color: #475569; font-weight: 500; }
 
+  /* Bahagian Footer Kredit */
+  .creator-footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+    font-weight: 700;
+    color: #4f46e5;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  }
+
   /* Animasi Kotak Bergegar (Shake) bila salah */
   @keyframes shake {
     0%, 100% { transform: translateX(0); }
@@ -224,16 +235,12 @@
     <div class="badge-tag">🎮 Interactive Grammar Game | Year 4</div>
   </header>
 
-<section class="card">
-    <!-- Pembungkus Flexbox untuk susun sebelah-menyebelah -->
+  <!-- Learning Objectives (Side by Side dengan Target.svg) -->
+  <section class="card">
     <div style="display: flex; align-items: center; gap: 25px; flex-wrap: wrap;">
-      
-      <!-- Bahagian Gambar (Sebelah Kiri) -->
-      <div style="flex: 1; text-align: center; min-width: 200px;">
-        <img src="Target.svg" style="width: 100%; max-width: 220px;" />
+      <div style="flex: 1; text-align: center; min-width: 180px;">
+        <img src="Target.svg" style="width: 100%; max-width: 200px;" />
       </div>
-
-      <!-- Bahagian Teks & Ayat (Sebelah Kanan) -->
       <div style="flex: 2; min-width: 250px;">
         <h2>🎯 Learning Objectives</h2>
         <p>By the end of this adventure, pupils will be able to:</p>
@@ -243,16 +250,33 @@
           <li>Create wonderful original sentences using pronouns.</li>
         </ul>
       </div>
-
     </div>
   </section>
 
-  <section class="card">
-    <h2>📘 Mission 1: Learn the Grammar</h2>
-    <p>A pronoun is a super-word used to replace a noun so we don't repeat names!</p>
-    <p><b>Subject pronouns:</b> I, you, he, she, it, we, they</p>
-    <p><b>Object pronouns:</b> me, you, him, her, it, us, them</p>
-    <p><b>Possessive adjectives:</b> my, your, his, her, its, our, their</p>
+  <!-- Mission 1: Learn the Grammar -->
+ <section class="card">
+    <div style="display: flex; align-items: center; gap: 30px; flex-wrap: wrap;">
+      
+      <!-- Bahagian Gambar  -->
+      <div style="flex: 1.5; text-align: center; min-width: 260px;">
+        <img src="Kid.svg" style="width: 100%; max-width: 400px; height: auto;" />
+      </div>
+
+      <!-- Bahagian Teks & Ayat -->
+      <div style="flex: 2; min-width: 250px;">
+        <h2>📘 Mission 1: Learn the Grammar</h2>
+        <p>A pronoun is a super-word used to replace a noun so we don't repeat names!</p>
+        <p><b>Subject pronouns:</b> I, you, he, she, it, we, they</p>
+        <p><b>Object pronouns:</b> me, you, him, her, it, us, them</p>
+      </div>
+
+    </div>
+
+    <div class="card" style="margin-top: 20px; background: #f8fafc; box-shadow: none; border-color: #e2e8f0;">
+      <p style="margin-top:0; color:#64748b;"><b>Without pronoun:</b> Aina has a book. Aina reads Aina's book.</p>
+      <p style="margin-bottom:0;"><b>With pronoun:</b> Aina has a book. <span class="highlight">She</span> reads <span class="highlight">her</span> book.</p>
+    </div>
+  </section>
 
     <div class="card" style="margin-top: 20px; background: #f8fafc; box-shadow: none; border-color: #e2e8f0;">
       <p style="margin-top:0; color:#64748b;"><b>Without pronoun:</b> Aina has a book. Aina reads Aina's book.</p>
@@ -296,29 +320,30 @@
     <p id="writingFeedback" class="feedback"></p>
   </section>
 
+  <!-- Adventure Complete (Side by Side dengan Book.svg) -->
   <section class="card">
     <div style="display: flex; align-items: center; gap: 25px; flex-wrap: wrap;">
-      
-      <!-- Bahagian Gambar (Sebelah Kiri) -->
       <div style="flex: 1; text-align: center; min-width: 180px;">
         <img src="Book.svg" style="width: 100%; max-width: 200px;" />
       </div>
-
-      <!-- Bahagian Kandungan & Input (Sebelah Kanan) -->
       <div style="flex: 2; min-width: 250px;">
         <h2>🏆 Adventure Complete!</h2>
         <p>What is one awesome thing you learned today?</p>
         
         <div style="margin: 15px 0;">
-          <input id="reflection" type="text" placeholder="Today, I learned that..." style="width: 80%; max-width: 80%;">
+          <input id="reflection" type="text" placeholder="Today, I learned that..." style="width: 90%; max-width: 100%;">
         </div>
 
         <button onclick="finishAdventure()">🎉 Finish & Claim Victory</button>
         <p id="finishFeedback" class="feedback"></p>
       </div>
-
     </div>
   </section>
+
+  <!-- Bahagian Kredit / Prepared By -->
+  <div class="creator-footer">
+    ✨ Educational Web Game Designed & Prepared by <b>Nur Syaida</b> ✨
+  </div>
 
 </div>
 
@@ -362,7 +387,7 @@ function nextQuestion() {
   document.getElementById("feedback").textContent = "";
 
   const buttons = document.querySelectorAll("#optionsBox button");
-  questions[currentQuestion].options.forecast || questions[currentQuestion].options.forEach((option, index) => {
+  questions[currentQuestion].options.forEach((option, index) => {
     if (buttons[index]) {
       buttons[index].textContent = option;
       buttons[index].onclick = () => checkAnswer(option);
