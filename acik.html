@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English Adventure: The Pronoun Quest</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #6366f1;
+    --primary-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+    --bg-gradient: linear-gradient(135deg, #f3e8ff 0%, #e0e7ff 50%, #fce7f3 100%);
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg-gradient);
+    color: #1e1b4b;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 850px;
+    margin: auto;
+    position: relative;
+  }
+
+  /* Animasi Ikon Terapung (Floating GIF/Emoji Effect) */
+  .floating-icon {
+    position: absolute;
+    font-size: 2.5rem;
+    animation: floatAnim 4s ease-in-out infinite alternate;
+    z-index: 10;
+    pointer-events: none;
+  }
+  .icon-1 { top: -20px; left: 10px; animation-delay: 0s; }
+  .icon-2 { top: 20px; right: 20px; animation-delay: 1.5s; }
+  .icon-3 { bottom: 40px; left: -10px; animation-delay: 1s; }
+
+  @keyframes floatAnim {
+    0% { transform: translateY(0px) rotate(0deg) scale(1); }
+    100% { transform: translateY(-15px) rotate(10deg) scale(1.1); }
+  }
+
+  /* Header Hero yang Berkilau */
+  .hero {
+    background: var(--primary-gradient);
+    color: white;
+    padding: 50px 30px;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(99, 102, 241, 0.35);
+    animation: fadeInDown 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 5px;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  }
+
+  .hero h2 {
+    font-size: 1.4rem;
+    color: #fde047;
+    font-weight: 700;
+    margin-bottom: 15px;
+  }
+
+  .badge-tag {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    padding: 8px 22px;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    animation: pulseGlow 2s infinite alternate;
+  }
+
+  @keyframes pulseGlow {
+    from { transform: scale(1); box-shadow: 0 0 0 rgba(255,255,255,0); }
+    to { transform: scale(1.05); box-shadow: 0 0 20px rgba(255,255,255,0.5); }
+  }
+
+  /* Kad Gaya Glassmorphism Moden */
+  .card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(16px);
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    margin: 25px 0;
+    border-radius: 26px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    animation: fadeInUp 0.8s ease-out backwards;
+  }
+
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 45px rgba(99, 102, 241, 0.15);
+    border-color: #a855f7;
+  }
+
+  h2 {
+    color: #4f46e5;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Butang Game Interaktif */
+  button {
+    background: var(--primary-gradient);
+    color: white;
+    border: none;
+    padding: 14px 26px;
+    border-radius: 16px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 8px 6px;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.3);
+  }
+
+  button:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.5);
+    filter: brightness(1.1);
+  }
+
+  button:active {
+    transform: translateY(1px) scale(0.97);
+  }
+
+  /* Kotak Input Moden */
+  input {
+    padding: 16px 20px;
+    border: 2px solid #cbd5e1;
+    border-radius: 16px;
+    width: calc(100% - 40px);
+    max-width: 480px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+    background: #f8fafc;
+  }
+
+  input:focus {
+    border-color: #6366f1;
+    background: #fff;
+    box-shadow: 0 0 0 5px rgba(99, 102, 241, 0.2);
+  }
+
+  .feedback {
+    font-weight: 700;
+    margin-top: 15px;
+    font-size: 1.05rem;
+    animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .highlight {
+    color: #9333ea;
+    font-weight: 800;
+    background: rgba(147, 51, 234, 0.12);
+    padding: 3px 8px;
+    border-radius: 8px;
+  }
+
+  ul { padding-left: 20px; }
+  li { margin-bottom: 8px; color: #475569; font-weight: 500; }
+
+  /* Animasi Kotak Bergegar (Shake) bila salah */
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-8px); }
+    40%, 80% { transform: translateX(8px); }
+  }
+  .shake-anim { animation: shake 0.4s ease-in-out; }
+
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes popIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+</style>
+</head>
+
+<body>
+<div class="container">
+
+  <!-- Ikon Animasi Bergerak Terapung -->
+  <div class="floating-icon icon-1">⭐</div>
+  <div class="floating-icon icon-2">📖</div>
+  <div class="floating-icon icon-3">🏆</div>
+
+  <header class="hero">
+    <h1>✨ English Adventure ✨</h1>
+    <h2>The Pronoun Quest</h2>
+    <p>Explore grammar, solve challenges, and level up your English skills!</p>
+    <div class="badge-tag">🎮 Interactive Grammar Game | Year 4</div>
+  </header>
+
+  <section class="card">
+    <h2>🎯 Learning Objectives</h2>
+    <p>By the end of this adventure, pupils will be able to:</p>
+    <ul>
+      <li>Identify common pronouns correctly.</li>
+      <li>Choose suitable pronouns inside interactive sentences.</li>
+      <li>Create wonderful original sentences using pronouns.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>📘 Mission 1: Learn the Grammar</h2>
+    <p>A pronoun is a super-word used to replace a noun so we don't repeat names!</p>
+    <p><b>Subject pronouns:</b> I, you, he, she, it, we, they</p>
+    <p><b>Object pronouns:</b> me, you, him, her, it, us, them</p>
+    <p><b>Possessive adjectives:</b> my, your, his, her, its, our, their</p>
+
+    <div class="card" style="margin-top: 20px; background: #f8fafc; box-shadow: none; border-color: #e2e8f0;">
+      <p style="margin-top:0; color:#64748b;"><b>Without pronoun:</b> Aina has a book. Aina reads Aina's book.</p>
+      <p style="margin-bottom:0;"><b>With pronoun:</b> Aina has a book. <span class="highlight">She</span> reads <span class="highlight">her</span> book.</p>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>🔎 Mission 2: Sentence Detective</h2>
+    <p><b>Clue:</b> Adam is my friend. He is very kind.</p>
+    <button onclick="showClue()">🔍 Reveal the Secret Clue</button>
+    <p id="clue" class="feedback"></p>
+  </section>
+
+  <section class="card">
+    <h2>🎮 Mission 3: Quiz Quest</h2>
+    <p id="question" style="font-weight:700; font-size:1.15rem;">Aina is my cousin. ___ lives near my house.</p>
+
+    <div style="margin: 20px 0;" id="optionsBox">
+      <button onclick="checkAnswer('He')">He</button>
+      <button onclick="checkAnswer('She')">She</button>
+      <button onclick="checkAnswer('They')">They</button>
+    </div>
+
+    <p id="feedback" class="feedback"></p>
+    <p id="score" style="font-weight: 800; color: #6366f1; font-size: 1.2rem; margin-top: 15px;">⭐ Quest Points: 0</p>
+
+    <button onclick="nextQuestion()" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); margin-top: 15px;">Next Challenge ➔</button>
+  </section>
+
+  <section class="card">
+    <h2>🌟 Mission 4: Become the Teacher!</h2>
+    <p>Rewrite this sentence using a proper pronoun:</p>
+    <p style="font-style: italic; color: #64748b; font-weight:600;">Lily has a puppy. Lily loves the puppy.</p>
+
+    <div style="margin: 20px 0;">
+      <input id="studentAnswer" type="text" placeholder="Type your improved sentence here...">
+    </div>
+
+    <button onclick="checkWriting()">✍️ Check My Sentence</button>
+    <p id="writingFeedback" class="feedback"></p>
+  </section>
+
+  <section class="card">
+    <h2>🏆 Adventure Complete!</h2>
+    <p>What is one awesome thing you learned today?</p>
+    
+    <div style="margin: 20px 0;">
+      <input id="reflection" type="text" placeholder="Today, I learned that...">
+    </div>
+
+    <button onclick="finishAdventure()">🎉 Finish & Claim Victory</button>
+    <p id="finishFeedback" class="feedback"></p>
+  </section>
+
+</div>
+
+<script>
+let score = 0;
+let currentQuestion = 0;
+
+const questions = [
+  { text: "Aina is my cousin. ___ lives near my house.", options: ["He", "She", "They"], answer: "She" },
+  { text: "The boys are playing football. Please join ___.", options: ["they", "them", "their"], answer: "them" },
+  { text: "I have a new pencil box. This is ___ pencil box.", options: ["my", "mine", "me"], answer: "my" },
+  { text: "The red bag belongs to me. It is ___.", options: ["my", "mine", "I"], answer: "mine" }
+];
+
+function showClue() {
+  const clueEl = document.getElementById("clue");
+  clueEl.textContent = "💡 Brilliant! 'He' replaces the proper noun 'Adam' as a subject pronoun.";
+  clueEl.style.color = "#6366f1";
+}
+
+function checkAnswer(answer) {
+  const feedback = document.getElementById("feedback");
+  const cardBox = document.querySelector("#question").closest('.card');
+
+  if (answer === questions[currentQuestion].answer) {
+    feedback.textContent = "🎉 Awesome! Correct Answer! (+10 Points)";
+    feedback.style.color = "#059669";
+    score += 10;
+    document.getElementById("score").textContent = "⭐ Quest Points: " + score;
+  } else {
+    feedback.textContent = "❌ Oops! Not quite right. Try again!";
+    feedback.style.color = "#dc2626";
+    cardBox.classList.add("shake-anim");
+    setTimeout(() => cardBox.classList.remove("shake-anim"), 400);
+  }
+}
+
+function nextQuestion() {
+  currentQuestion = (currentQuestion + 1) % questions.length;
+  document.getElementById("question").textContent = questions[currentQuestion].text;
+  document.getElementById("feedback").textContent = "";
+
+  const buttons = document.querySelectorAll("#optionsBox button");
+  questions[currentQuestion].options.forecast || questions[currentQuestion].options.forEach((option, index) => {
+    if (buttons[index]) {
+      buttons[index].textContent = option;
+      buttons[index].onclick = () => checkAnswer(option);
+    }
+  });
+}
+
+function checkWriting() {
+  const answer = document.getElementById("studentAnswer").value.trim();
+  const feedback = document.getElementById("writingFeedback");
+
+  if (!answer) {
+    feedback.textContent = "⚠️ Please write your sentence first!";
+    feedback.style.color = "#dc2626";
+    return;
+  }
+
+  if (/\b(she|he|it|they|her|him|them)\b/i.test(answer)) {
+    feedback.textContent = "🌟 Fantastic! You successfully used a pronoun!";
+    feedback.style.color = "#059669";
+  } else {
+    feedback.textContent = "💡 Almost there! Can you replace the repeated name 'Lily' with a pronoun?";
+    feedback.style.color = "#ea580c";
+  }
+}
+
+function finishAdventure() {
+  const reflection = document.getElementById("reflection").value.trim();
+  const feedback = document.getElementById("finishFeedback");
+
+  if (reflection) {
+    feedback.textContent = "🏆 Incredible job, Grammar Champion! Quest Completed Successfully!";
+    feedback.style.color = "#059669";
+  } else {
+    feedback.textContent = "⚠️ Please write down your reflection before finishing!";
+    feedback.style.color = "#dc2626";
+  }
+}
+</script>
+
+</body>
+</html>
