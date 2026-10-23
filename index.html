@@ -73,6 +73,9 @@
     color: #fde047;
     font-weight: 700;
     margin-bottom: 15px;
+    align-items: center;
+    text-align: center;
+    display: block;
   }
 
   .badge-tag {
@@ -221,14 +224,27 @@
     <div class="badge-tag">🎮 Interactive Grammar Game | Year 4</div>
   </header>
 
-  <section class="card">
-    <h2>🎯 Learning Objectives</h2>
-    <p>By the end of this adventure, pupils will be able to:</p>
-    <ul>
-      <li>Identify common pronouns correctly.</li>
-      <li>Choose suitable pronouns inside interactive sentences.</li>
-      <li>Create wonderful original sentences using pronouns.</li>
-    </ul>
+<section class="card">
+    <!-- Pembungkus Flexbox untuk susun sebelah-menyebelah -->
+    <div style="display: flex; align-items: center; gap: 25px; flex-wrap: wrap;">
+      
+      <!-- Bahagian Gambar (Sebelah Kiri) -->
+      <div style="flex: 1; text-align: center; min-width: 200px;">
+        <img src="Target.svg" style="width: 100%; max-width: 220px;" />
+      </div>
+
+      <!-- Bahagian Teks & Ayat (Sebelah Kanan) -->
+      <div style="flex: 2; min-width: 250px;">
+        <h2>🎯 Learning Objectives</h2>
+        <p>By the end of this adventure, pupils will be able to:</p>
+        <ul>
+          <li>Identify common pronouns correctly.</li>
+          <li>Choose suitable pronouns inside interactive sentences.</li>
+          <li>Create wonderful original sentences using pronouns.</li>
+        </ul>
+      </div>
+
+    </div>
   </section>
 
   <section class="card">
@@ -281,15 +297,27 @@
   </section>
 
   <section class="card">
-    <h2>🏆 Adventure Complete!</h2>
-    <p>What is one awesome thing you learned today?</p>
-    
-    <div style="margin: 20px 0;">
-      <input id="reflection" type="text" placeholder="Today, I learned that...">
-    </div>
+    <div style="display: flex; align-items: center; gap: 25px; flex-wrap: wrap;">
+      
+      <!-- Bahagian Gambar (Sebelah Kiri) -->
+      <div style="flex: 1; text-align: center; min-width: 180px;">
+        <img src="Book.svg" style="width: 100%; max-width: 200px;" />
+      </div>
 
-    <button onclick="finishAdventure()">🎉 Finish & Claim Victory</button>
-    <p id="finishFeedback" class="feedback"></p>
+      <!-- Bahagian Kandungan & Input (Sebelah Kanan) -->
+      <div style="flex: 2; min-width: 250px;">
+        <h2>🏆 Adventure Complete!</h2>
+        <p>What is one awesome thing you learned today?</p>
+        
+        <div style="margin: 15px 0;">
+          <input id="reflection" type="text" placeholder="Today, I learned that..." style="width: 80%; max-width: 80%;">
+        </div>
+
+        <button onclick="finishAdventure()">🎉 Finish & Claim Victory</button>
+        <p id="finishFeedback" class="feedback"></p>
+      </div>
+
+    </div>
   </section>
 
 </div>
